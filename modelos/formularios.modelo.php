@@ -33,7 +33,7 @@ class ModeloFormularios{
 
     static public function mdlSeleccionarRegistros($tabla){
 
-        $stmt = Conexion::conectar()->prepare("SELECT * FROM registros");
+        $stmt = Conexion::conectar()->prepare("SELECT * ,DATE_FORMAT(fecha,'%d/%m/%Y') AS fecha FROM $tabla ORDER BY id DESC ");
 
         $stmt->execute();
 

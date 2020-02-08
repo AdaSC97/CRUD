@@ -3,9 +3,10 @@ $usuarios = ControladorFormularios::ctrSeleccionarRegistros();
 
 ?>
 
-<table class="table">
+<table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>N°</th>
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Fecha de creación</th>
@@ -13,11 +14,12 @@ $usuarios = ControladorFormularios::ctrSeleccionarRegistros();
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                        <td>23/10/2019</td>
+                    <?php foreach($usuarios as $key => $value): ?>
+                        <tr>
+                        <td><?php echo ($key+1); ?></td>
+                        <td><?php echo $value["nombre"] ?></td>
+                        <td><?php echo $value["email"] ?></td>
+                        <td><?php echo $value["fecha"] ?></td>
                         <td>
                             <div class="btn-group">
                                 <button class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
@@ -25,5 +27,7 @@ $usuarios = ControladorFormularios::ctrSeleccionarRegistros();
 
                             </div>
                         </td>
+                    </tr>
+                   <?php endforeach ?>
                 </tbody>
-            </table>
+</table>
