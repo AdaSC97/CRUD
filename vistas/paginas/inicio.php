@@ -1,9 +1,15 @@
+<?php
+$usuarios = ControladorFormularios::ctrSeleccionarRegistros();
+
+?>
+
 <table class="table">
                 <thead>
                     <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
+                        <th>Nombre</th>
                         <th>Email</th>
+                        <th>Fecha de creación</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -11,16 +17,13 @@
                         <td>John</td>
                         <td>Doe</td>
                         <td>john@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
-                    </tr>
+                        <td>23/10/2019</td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
+                                <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+
+                            </div>
+                        </td>
                 </tbody>
             </table>
