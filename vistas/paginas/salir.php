@@ -1,1 +1,5 @@
-<h1 class="text-center">Salir</h1>
+<?php
+session_destroy();
+
+echo '<script> window.location =  "index.php?pagina=ingreso";</script>';
+?>
