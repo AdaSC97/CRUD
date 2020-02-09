@@ -99,12 +99,14 @@ session_start();
         if (isset($_GET["pagina"])){
 
             if($_GET["pagina"] == "registro" ||
-               $_GET["pagina"] == "ingreso" || 
+               $_GET["pagina"] == "ingreso" ||
+               $_GET["pagina"] =="inicio" || 
+               $_GET["pagina"] =="editar"||
                $_GET["pagina"] =="salir"){
 
                 include "paginas/".$_GET["pagina"].".php"; 
                }else{
-                include "paginas/inicio.php";
+                include "paginas/error404.php";
                }
         }else{
             include "paginas/registro.php";

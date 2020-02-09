@@ -17,10 +17,10 @@ class ControladorFormularios{
         }
     }
 
-    static public function ctrSeleccionarRegistros(){
+    static public function ctrSeleccionarRegistros($item,$valor){
 
         $tabla = "registros";
-        $respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla, null, null);
+        $respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla, $item,$valor);
         return $respuesta;
 
     }

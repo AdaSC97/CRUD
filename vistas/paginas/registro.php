@@ -6,7 +6,7 @@
                <div class="input-group-prepend">
                    <span class="input-group-text" id="inputGroup-group-text"><i class="fas fa-user"></i></span>
                 </div> 
-                <input type="text" class="form-control" placeholder="Teclee su e-mail" id="nombre"  name="registroNombre">
+                <input type="text" class="form-control" placeholder="Teclee su nombre" id="nombre"  name="registroNombre">
            </div>
      </div>
 
