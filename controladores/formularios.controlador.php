@@ -88,12 +88,13 @@ class ControladorFormularios{
 
             $tabla = "registros";
             $datos =  array(
+                "id" => $_POST["idUsuario"],
                 "nombre" => $_POST["actualizarNombre"],
                 "email" => $_POST["actualizarEmail"],
                 "password" => $password
             );
 
-            $respuesta = ModeloFormularios::mdlActualizarRegistros($tabla,$datos);
+            $respuesta = ModeloFormularios::mdlActualizarRegristro($tabla,$datos);
             if($respuesta == "ok"){
                 echo '<script>
                     if ( window.history.replaceState ) {

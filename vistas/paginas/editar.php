@@ -38,11 +38,13 @@ if(isset($_GET["id"])){
                 </div>
             <input type="password" class="form-control"  placeholder="Escriba su contraseña" id="pwd" name="actualizarPassword">
             <input type="hidden" name = "passwordActual" value ="<?php echo $usuario["password"]; ?>">
+            <input type="hidden" name = "idUsuario" value ="<?php echo $usuario["id"]; ?>">
           </div>
      </div>
 
     <?php
-
+    $actualizar = new ControladorFormularios();
+    $actualizar->ctrActualizarRegistro();
     ?>
         <button class="btn btn-warning">Actualizar</button>
 </form>
