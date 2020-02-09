@@ -56,11 +56,16 @@ if(isset($_GET["id"])){
 
         echo '<script>
 
-           setTimeout (function(){
-            indow.location =  "index.php?pagina=inicio;
-           },2000)
+				setTimeout(function(){
+				
+					window.location = "index.php?pagina=inicio";
 
-        </script>';
+				},3000);
+
+			</script>
+
+			';
+
     }
     ?>
         <button class="btn btn-warning">Actualizar</button>
