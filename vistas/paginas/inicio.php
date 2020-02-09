@@ -47,6 +47,10 @@ $usuarios = ControladorFormularios::ctrSeleccionarRegistros(null,null);
                                         <button type="submit" class="btn btn-danger">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
+                                        <?php
+                                            $eliminar = new ControladorFormularios();
+                                            $eliminar->ctrEliminarRegistro();
+                                         ?>
                                 </form>
                                 </div>
                                 
