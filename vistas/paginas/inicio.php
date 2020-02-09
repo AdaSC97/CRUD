@@ -15,6 +15,9 @@ if(!isset($_SESSION["validarIngreso"])){
 
 $usuarios = ControladorFormularios::ctrSeleccionarRegistros(null,null);
 
+$actualizar = new ControladorFormularios();
+$actualizar -> ctrActualizarRegistro();
+
 ?>
 
 <table class="table table-striped">

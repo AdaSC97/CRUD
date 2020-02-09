@@ -75,6 +75,36 @@ class ControladorFormularios{
         
         }
     }
+    public function ctrActualizarRegistro(){
+
+        if(isset($_POST["actualizarNombre"])){
+
+            if(isset($_POST["actualizarPassword"]) != ""){
+
+                $password = $_POST["actualizarPassword"];
+            }else{
+                $password = $_POST["passwordActual"];
+            }
+
+            $tabla = "registros";
+            $datos =  array(
+                "nombre" => $_POST["actualizarNombre"],
+                "email" => $_POST["actualizarEmail"],
+                "password" => $password
+            );
+
+            $respuesta = ModeloFormularios::mdlActualizarRegistros($tabla,$datos);
+            if($respuesta == "ok"){
+                echo '<script>
+                    if ( window.history.replaceState ) {
+                        window.history.replaceState( null, null, window.location.href );
+                    }
+                        </script>';
+
+                echo '<div class="alert alert-warning">El usuario ha sido Actualizado</div>';
+            }
+        }
+    }
 }
 
 ?>
