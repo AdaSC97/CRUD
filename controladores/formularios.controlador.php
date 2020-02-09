@@ -75,7 +75,7 @@ class ControladorFormularios{
         
         }
     }
-    public function ctrActualizarRegistro(){
+    static public function ctrActualizarRegistro(){
 
         if(isset($_POST["actualizarNombre"])){
 
@@ -95,15 +95,8 @@ class ControladorFormularios{
             );
 
             $respuesta = ModeloFormularios::mdlActualizarRegristro($tabla,$datos);
-            if($respuesta == "ok"){
-                echo '<script>
-                    if ( window.history.replaceState ) {
-                        window.history.replaceState( null, null, window.location.href );
-                    }
-                        </script>';
-
-                echo '<div class="alert alert-warning">El usuario ha sido Actualizado</div>';
-            }
+            return $respuesta;
+            
         }
     }
 }
