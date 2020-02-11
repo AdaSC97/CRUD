@@ -15,4 +15,3 @@ require_once "modelos/formularios.modelo.php";
 
 $plantilla = new ControladorPlantilla();
 $plantilla -> ctrTraerPlantilla();
-?>
