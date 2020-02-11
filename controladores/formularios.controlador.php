@@ -4,13 +4,16 @@ class ControladorFormularios{
     static public function ctrRegistro(){
         
         if(isset($_POST["registroNombre"])){
-            if(preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/', $_POST["registroNombre"])
-            && preg_match('/^[^[_a-z0-9-]+([.][_a-z0-9-]+)*[@][a-z0-9-]+(\.[a-z0-9_]+)*[.][a-z]){2,3}$/', $_POST["registroEmail"])
-            && preg_match('/^[0-9a-zA-Z]+$/', $_POST["registroPassword"])
+            if(
+                preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["registroNombre"]) &&
+                preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["registroEmail"]) &&
+                preg_match('/^[0-9a-zA-Z]+$/', $_POST["registroPassword"])
             ){
-                    $tabla = "registros";
+                $tabla = "registros";
+                $token = md5($_POST["registroNombre"]."+".$_POST["registroEmail"]);
                 $datos =  array(
                     "nombre" => $_POST["registroNombre"],
+                    "token" => $token,
                     "email" => $_POST["registroEmail"],
                     "password" => $_POST["registroPassword"]
                 );
