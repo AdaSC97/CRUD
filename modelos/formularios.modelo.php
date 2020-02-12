@@ -64,12 +64,12 @@ class ModeloFormularios{
         #prepare previene inyeccioes SQL
 
         $stmt = Conexion::conectar()->prepare("UPDATE registros SET nombre = :nombre, email = :email,
-         password = :password WHERE id = :id");
+         password = :password WHERE token = :token");
 
          $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
          $stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
          $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
-         $stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
+         $stmt->bindParam(":token", $datos["token"], PDO::PARAM_STR);
 
          if($stmt->execute()){
              return "ok";
@@ -88,9 +88,9 @@ class ModeloFormularios{
 
         #prepare previene inyeccioes SQL
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE token = token");
 
-         $stmt->bindParam(":id", $valor, PDO::PARAM_STR);
+         $stmt->bindParam("token", $valor, PDO::PARAM_STR);
 
          if($stmt->execute()){
              return "ok";
