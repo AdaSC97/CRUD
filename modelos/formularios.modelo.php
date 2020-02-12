@@ -88,9 +88,9 @@ class ModeloFormularios{
 
         #prepare previene inyeccioes SQL
 
-        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE token = token");
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE token = :token");
 
-         $stmt->bindParam("token", $valor, PDO::PARAM_STR);
+         $stmt->bindParam(":token", $valor, PDO::PARAM_STR);
 
          if($stmt->execute()){
              return "ok";
