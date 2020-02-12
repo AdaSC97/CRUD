@@ -11,11 +11,12 @@ class ControladorFormularios{
             ){
                 $tabla = "registros";
                 $token = md5($_POST["registroNombre"]."+".$_POST["registroEmail"]);
+                $encriptarPassword = crypt($_POST["registroPassword"], '$2a$07$estoesuncrudproteGidodeToDo131409052553$');
                 $datos =  array(
                     "nombre" => $_POST["registroNombre"],
                     "token" => $token,
                     "email" => $_POST["registroEmail"],
-                    "password" => $_POST["registroPassword"]
+                    "password" => $encriptarPassword
                 );
 
                 $respuesta = ModeloFormularios::mdlRegistro($tabla,$datos);
@@ -47,9 +48,14 @@ class ControladorFormularios{
 
             $respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla, $item, $valor);
 
+            $encriptarPassword = crypt($_POST["ingresoPassword"], '$2a$07$estoesuncrudproteGidodeToDo131409052553$');
+
             if(is_array($respuesta)){
 
-                if($respuesta["email"] ==  $_POST["ingresoEmail"] && $respuesta["password"] == $_POST["ingresoPassword"]){
+                if($respuesta["email"] ==  $_POST["ingresoEmail"] && $respuesta["password"] == $encriptarPassword){
+
+                    
+                    ModeloFormularios::mdlActualizarIntentosFallidos($tabla,0,$respuesta["token"]);
 
                     $_SESSION["validarIngreso"] = "ok";
 
@@ -61,7 +67,18 @@ class ControladorFormularios{
                        
                         </script>'; 
                 }else{
-    
+
+                    if($respuesta["intentos_fallidos"] < 3){
+
+                        $intentos_fallidos = $respuesta["intentos_fallidos"] + 1;
+                        
+                        ModeloFormularios::mdlActualizarIntentosFallidos($tabla,$intentos_fallidos,$respuesta["token"]);
+                    }else{
+
+                        echo '<div class="alert alert-warning">RECAPTCHA Debes validar que no eres un robot</div>';
+
+
+                    }
                     echo '<script>
                         if ( window.history.replaceState ) {
                             window.history.replaceState( null, null, window.location.href );
@@ -107,7 +124,8 @@ class ControladorFormularios{
 
                         if (preg_match('/^[0-9a-zA-Z]+$/', $_POST["actualizarPassword"])){
 
-                            $password = $_POST["actualizarPassword"];
+                            $password = crypt($_POST["actualizarPassword"] , '$2a$07$estoesuncrudproteGidodeToDo131409052553$');
+
                         }
 
                     }else{
@@ -167,4 +185,3 @@ class ControladorFormularios{
     }
 }
 
-?>
