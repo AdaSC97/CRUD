@@ -63,7 +63,7 @@ class ControladorFormularios{
                     if ( window.history.replaceState ) {
                         window.history.replaceState( null, null, window.location.href );
                     }
-                       window.location =  "index.php?pagina=inicio"
+                       window.location =  "inicio"
                        
                         </script>'; 
                 }else{
@@ -175,7 +175,7 @@ class ControladorFormularios{
                                 if ( window.history.replaceState ) {
                                     window.history.replaceState( null, null, window.location.href );
                                 }
-                                window.location =  "index.php?pagina=inicio"
+                                window.location =  "inicio"
                             
                                 </script>'; 
 
